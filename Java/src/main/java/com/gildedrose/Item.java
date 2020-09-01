@@ -14,6 +14,8 @@ public class Item {
         this.quality = quality;
     }
 
+    public void upgrade() {};
+
    @Override
    public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
@@ -28,36 +30,6 @@ public class Item {
   public void increaseQuality() {
       if (quality < 50) {
           quality = quality + 1;
-      }
-  }
-
-  public void upgradeNormal() {
-      sellIn = sellIn - 1;
-      decreaseQuality();
-      if (sellIn < 0) {
-          decreaseQuality();
-      }
-  }
-
-  public void upgradeBackstage() {
-      sellIn = sellIn - 1;
-      increaseQuality();
-      if (sellIn < 10) {
-          increaseQuality();
-      }
-      if (sellIn < 5) {
-          increaseQuality();
-      }
-      if (sellIn < 0) {
-          quality = 0;
-      }
-  }
-
-  public void upgrdaeAged() {
-      sellIn = sellIn - 1;
-      increaseQuality();
-      if (sellIn < 0) {
-          increaseQuality();
       }
   }
 }
