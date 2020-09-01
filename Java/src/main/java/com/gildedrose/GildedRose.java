@@ -14,42 +14,43 @@ class GildedRose {
             }
 
             if (item.name.equals("Aged Brie")) {
-                item.sellIn = item.sellIn - 1;
-                increaseQuality(item);
-                if (item.sellIn < 0) {
-                    increaseQuality(item);
-                }
+                upgrdaeAged(item);
             } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                item.sellIn = item.sellIn - 1;
-                increaseQuality(item);
-                if (item.sellIn < 10) {
-                    increaseQuality(item);
-                }
-                if (item.sellIn < 5) {
-                    increaseQuality(item);
-                }
-                if (item.sellIn < 0) {
-                    item.quality = 0;
-                }
+                upgradeBackstage(item);
             } else {
-                item.sellIn = item.sellIn - 1;
-                decreaseQuality(item);
-                if (item.sellIn < 0) {
-                    decreaseQuality(item);
-                }
+                upgradeNormal(item);
             }
         }
     }
 
-    public void decreaseQuality(Item item) {
-        if (item.quality > 0) {
-            item.quality = item.quality - 1;
+    public void upgradeNormal(Item item) {
+        item.sellIn = item.sellIn - 1;
+        item.decreaseQuality();
+        if (item.sellIn < 0) {
+            item.decreaseQuality();
         }
     }
 
-    public void increaseQuality(Item item) {
-        if (item.quality < 50) {
-            item.quality = item.quality + 1;
+    public void upgradeBackstage(Item item) {
+        item.sellIn = item.sellIn - 1;
+        item.increaseQuality();
+        if (item.sellIn < 10) {
+            item.increaseQuality();
+        }
+        if (item.sellIn < 5) {
+            item.increaseQuality();
+        }
+        if (item.sellIn < 0) {
+            item.quality = 0;
         }
     }
+
+    public void upgrdaeAged(Item item) {
+        item.sellIn = item.sellIn - 1;
+        item.increaseQuality();
+        if (item.sellIn < 0) {
+            item.increaseQuality();
+        }
+    }
+
 }

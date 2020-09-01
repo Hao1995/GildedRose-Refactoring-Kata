@@ -18,4 +18,16 @@ public class Item {
    public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
+
+  public void decreaseQuality() {
+      if (quality > 0) {
+          quality = quality - 1;
+      }
+  }
+
+  public void increaseQuality() {
+      if (quality < 50) {
+          quality = quality + 1;
+      }
+  }
 }
